@@ -81,35 +81,57 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* Mobile Menu Logic */
-    const hamburger = document.querySelector('.hamburger-menu');
-    const mobileOverlay = document.querySelector('.mobile-menu-overlay');
-    const mobileLinks = document.querySelectorAll('.mobile-link');
+    /* Mobile Bottom Nav Logic */
+    const navItems = document.querySelectorAll('.mobile-bottom-nav .nav-item');
+    const sections = document.querySelectorAll('section, header#top, footer#contact');
 
-    if (hamburger && mobileOverlay) {
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            mobileOverlay.classList.toggle('active');
-            document.body.style.overflow = mobileOverlay.classList.contains('active') ? 'hidden' : '';
-        });
+    function setActiveNav() {
+        let current = '';
+        const scrollPosition = window.scrollY + (window.innerHeight / 2); // Center of viewport
 
-        // Close menu when clicking a link
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                mobileOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        });
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
 
-        // Close when clicking outside content (on overlay background)
-        mobileOverlay.addEventListener('click', (e) => {
-            if (e.target === mobileOverlay) {
-                hamburger.classList.remove('active');
-                mobileOverlay.classList.remove('active');
-                document.body.style.overflow = '';
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                current = section.getAttribute('id');
             }
         });
+
+        // Special case for 'home' / top
+        if (window.scrollY < 100) current = 'top';
+
+        navItems.forEach(item => {
+            item.classList.remove('active');
+            const href = item.getAttribute('href').substring(1);
+            if (href === current) {
+                item.classList.add('active');
+            }
+            // Map specific sections to nav items (e.g., 'operational-core' -> Exp icon)
+            if (current === 'operational-core' && href === 'operational-core') item.classList.add('active');
+            if ((current === 'education' || current === 'innovation') && href === 'skills') item.classList.add('active');
+        });
     }
+
+    window.addEventListener('scroll', setActiveNav);
+
+    // Smooth scroll offset for fixed bottom nav
+    navItems.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            if (targetSection) {
+                window.scrollTo({
+                    top: targetSection.offsetTop - 20, // Small buffer
+                    behavior: 'smooth'
+                });
+            }
+
+            // Manual active set for instant feedback
+            navItems.forEach(n => n.classList.remove('active'));
+            link.classList.add('active');
+        });
+    });
 
 });

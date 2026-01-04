@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { useTheme } from '../context/ThemeContext';
-import { Moon, Sun, Languages } from 'lucide-react';
+import { Languages } from 'lucide-react';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { t, language, setLanguage } = useLanguage();
-    const { theme, toggleTheme } = useTheme();
+    // Theme is always dark, no need to access context for toggling
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
     const closeMenu = () => setIsMenuOpen(false);
@@ -24,11 +23,6 @@ const Navbar = () => {
 
                 {/* Controls Mobile (visible only on mobile via CSS if needed, but here we keep them accessible) */}
                 <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }} className="mobile-controls">
-                    {/* Theme Toggle Mobile */}
-                    <button onClick={toggleTheme} className="theme-toggle-btn" aria-label="Toggle Theme">
-                        {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-                    </button>
-
                     {/* Hamburger Menu Button */}
                     <button
                         className={`hamburger-menu ${isMenuOpen ? 'active' : ''}`}
@@ -54,9 +48,6 @@ const Navbar = () => {
                     <button onClick={toggleLang} className="lang-toggle-btn" title="Switch Language">
                         <Languages size={18} />
                         <span style={{ fontSize: '0.8rem', fontWeight: 600 }}>{language.toUpperCase()}</span>
-                    </button>
-                    <button onClick={toggleTheme} className="theme-toggle-btn" title="Toggle Theme">
-                        {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
                     </button>
                     <a href="#contact" className="btn-open-work-pill">{t.nav.contact}</a>
                 </div>

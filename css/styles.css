@@ -419,21 +419,9 @@ body {
     left: -40px;
     width: 220px;
     z-index: 4;
-    animation: float 6s ease-in-out infinite;
+    /* Animation removed */
     background: rgba(22, 24, 34, 0.95);
     backdrop-filter: blur(5px);
-}
-
-@keyframes float {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-15px);
-    }
 }
 
 /* Tech Panel Visual (Reusable) */
@@ -1486,5 +1474,223 @@ button.contact-item {
 
     .contact-row:hover {
         transform: translateY(-5px);
+    }
+}
+
+/* --- Mobile Menu & Responsive Navigation --- */
+
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 102;
+    /* Above overlay */
+    padding: 0;
+}
+
+.hamburger-menu span {
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: left;
+}
+
+/* Hamburger Animation State */
+.hamburger-menu.active span:first-child {
+    transform: rotate(45deg);
+}
+
+.hamburger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active span:last-child {
+    transform: rotate(-45deg);
+}
+
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(10, 11, 16, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 101;
+    /* High but below hamburger */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+    pointer-events: none;
+}
+
+.mobile-menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.mobile-menu-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    transform: translateY(30px);
+    transition: transform 0.4s ease;
+}
+
+.mobile-menu-overlay.active .mobile-menu-content {
+    transform: translateY(0);
+}
+
+.mobile-link {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.3s;
+}
+
+.mobile-link:hover,
+.mobile-link.active {
+    color: white;
+}
+
+.mobile-link.highlight {
+    color: var(--accent);
+}
+
+.desktop-only {
+    display: block;
+}
+
+/* --- Media Queries Updates --- */
+@media (max-width: 900px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .desktop-only {
+        display: none;
+    }
+
+    .nav-floating-pill {
+        padding: 0.8rem 1.5rem;
+        width: 90%;
+        max-width: none;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Hero Section Mobile */
+    .hero-section {
+        padding-top: 7rem;
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+        /* Reduced from 3.5rem */
+    }
+
+    .hero-desc {
+        margin: 0 auto 2rem;
+    }
+
+    .hero-metrics {
+        border-left: none;
+        border-top: 1px solid var(--accent);
+        padding-left: 0;
+        padding-top: 1.5rem;
+        justify-content: center;
+        margin-bottom: 2rem;
+        gap: 1.5rem;
+    }
+
+    .hero-actions {
+        justify-content: center;
+        flex-direction: column;
+        padding: 0 2rem;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+    }
+
+    /* Timeline Mobile */
+    .timeline-container {
+        padding-left: 0;
+        margin-left: 1rem;
+        border-left: 2px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .timeline-container::before {
+        display: none;
+        /* Remove duplicate line if customized above */
+    }
+
+    .timeline-item {
+        padding-left: 1.5rem;
+    }
+
+    .timeline-marker {
+        left: -1.45rem;
+        /* Re-align with new left border */
+    }
+
+    /* Footer Mobile */
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .contact-left {
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-right {
+        width: 100%;
+    }
+
+    /* Innovation Grid */
+    .innovation-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tech-panelll {
+        /* Note check if class exists/typo */
+        display: none;
+    }
+
+    .float-panel {
+        display: none;
+        /* Hide floating decorative elements on mobile */
+    }
+
+    .profile-container {
+        width: 250px;
+        height: 250px;
+        margin: 0 auto;
     }
 }

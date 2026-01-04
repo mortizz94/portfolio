@@ -71,5 +71,5 @@ Si te interesa mi perfil o quieres colaborar:
 - **GitHub:** [@mortizz94](https://github.com/mortizz94)
 
 ---
-© 2026 Diego Martínez Ortiz. Creado con pasión por la tecnología.
+© 2026 Diego Martínez Ortiz
 

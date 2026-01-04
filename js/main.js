@@ -18,19 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     revealElements.forEach(el => observer.observe(el));
 
 
-    /* Status Panel Animation (Hero) */
-    const logEntries = document.querySelectorAll('.log-entry');
-    logEntries.forEach((entry, index) => {
-        entry.style.opacity = '0';
-        entry.style.transform = 'translateY(10px)';
-        entry.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
 
-        // Simple sequential fade in
-        setTimeout(() => {
-            entry.style.opacity = '1';
-            entry.style.transform = 'translateY(0)';
-        }, 1000 + (index * 800));
-    });
 
     /* Navbar Glass Effect */
     const navPill = document.querySelector('.nav-floating-pill');
@@ -89,6 +77,37 @@ document.addEventListener('DOMContentLoaded', () => {
                 } catch (err) {
                     console.error('Failed to copy matches');
                 }
+            }
+        });
+    }
+
+    /* Mobile Menu Logic */
+    const hamburger = document.querySelector('.hamburger-menu');
+    const mobileOverlay = document.querySelector('.mobile-menu-overlay');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    if (hamburger && mobileOverlay) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileOverlay.classList.toggle('active');
+            document.body.style.overflow = mobileOverlay.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close menu when clicking a link
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Close when clicking outside content (on overlay background)
+        mobileOverlay.addEventListener('click', (e) => {
+            if (e.target === mobileOverlay) {
+                hamburger.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                document.body.style.overflow = '';
             }
         });
     }

@@ -1,73 +1,74 @@
-# React + TypeScript + Vite
+# Portfolio de Diego Martínez
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portfolio profesional desarrollado con **React**, **TypeScript** y **Vite**. Diseñado para ser rápido, accesible y modular, desplegado en **Cloudflare Pages**.
 
-Currently, two official plugins are available:
+![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Características Principales
 
-## React Compiler
+- **Arquitectura Moderna:** Single Page Application (SPA) construida con React 19 y TypeScript.
+- **Rendimiento:** Optimizado con Vite para cargas instantáneas.
+- **Internacionalización (i18n):** Soporte completo para Inglés (EN) y Español (ES) mediante Context API.
+- **Tema Dinámico:** Modo Claro / Oscuro con persistencia de preferencias.
+- **Integraciones:**
+  - **GitHub API:** Visualización dinámica de repositorios destacados.
+  - **Lucide React:** Iconografía moderna y ligera.
+- **Cumplimiento Legal:** Modal integrado para Aviso Legal (LSSI), Privacidad (RGPD) y Cookies.
+- **Diseño Responsivo:** Adaptado a dispositivos móviles, tablets y escritorio.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Stack Tecnológico
 
-## Expanding the ESLint configuration
+- **Frontend:** React, TypeScript, CSS3 (Variables & Glassmorphism)
+- **Build Tool:** Vite
+- **Despliegue:** Cloudflare Pages
+- **Linter:** ESLint + TypeScript-ESLint
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📦 Instalación y Uso
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1. **Clonar el repositorio:**
+   ```bash
+   git clone https://github.com/mortizz94/portfolio.git
+   cd portfolio
+   ```
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+2. **Instalar dependencias:**
+   ```bash
+   npm install
+   ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+3. **Ejecutar en desarrollo:**
+   ```bash
+   npm run dev
+   ```
+
+4. **Construir para producción:**
+   ```bash
+   npm run build
+   ```
+
+## 🌐 Estructura del Proyecto
+
+```
+src/
+├── components/      # Componentes de React (Navbar, Hero, Experience, etc.)
+├── context/         # Context Providers (LanguageContext, ThemeContext)
+├── data/            # Archivos de contenido y tipos (es.ts, en.ts, types.ts)
+├── styles/          # (Opcional) Estilos modulares si aplica
+└── index.css        # Estilos globales y variables CSS
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📝 Changelog
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### v1.1.0 - 2026-01-04
+- **Feature:** Implementación de soporte multi-idioma (Español/Inglés).
+- **Feature:** Añadido selector de Tema (Claro/Oscuro).
+- **Refactor:** Migración de todo el contenido estático a archivos de datos tipados (`src/data`).
+- **Update:** Refactorización de componentes principales para consumir los nuevos contextos.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### v1.0.0
+- Migración inicial a React + Vite.
+- Despliegue en Cloudflare Pages.
+
+---
+&copy; 2026 Diego Martínez Ortiz

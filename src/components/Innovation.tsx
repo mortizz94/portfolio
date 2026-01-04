@@ -1,32 +1,29 @@
-
 import { Cloud, Layers, Cpu } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 const Innovation = () => {
+    const { t } = useLanguage();
+
     return (
         <section id="innovation" className="section dark-section">
             <div className="container">
                 <div className="innovation-grid fade-up">
                     <div className="innovation-text">
-                        <h2>Cloud, Web & <span className="blue-text">AI Labs</span></h2>
-                        <p>
-                            Mas allá de las operaciones tradicionales, despliego servicios modernos utilizando el ecosistema
-                            <strong> Cloudflare</strong> e integro herramientas de <strong>IA</strong> en el flujo de
-                            desarrollo.
-                        </p>
+                        <h2>{t.innovation.title}</h2>
+                        <p>{t.innovation.subtitle}</p>
 
                         <div className="tech-stack-list">
-                            <div className="stack-item">
-                                <i><Cloud size={20} /></i>
-                                <div><strong>Cloudflare Ecosystem</strong><small>Workers, Pages, Zero Trust (Tunnels) & Auth.</small></div>
-                            </div>
-                            <div className="stack-item">
-                                <i><Layers size={20} /></i>
-                                <div><strong>Desarrollo Web</strong><small>Apps estáticas/dinámicas (HTML5, JS, Supabase).</small></div>
-                            </div>
-                            <div className="stack-item">
-                                <i><Cpu size={20} /></i>
-                                <div><strong>IA Integration</strong><small>Antigravity, Gemini & Stitch.</small></div>
-                            </div>
+                            {t.innovation.items.map((item, idx) => (
+                                <div key={idx} className="stack-item">
+                                    <i>
+                                        {idx === 0 ? <Cloud size={20} /> : idx === 1 ? <Layers size={20} /> : <Cpu size={20} />}
+                                    </i>
+                                    <div>
+                                        <strong>{item.title}</strong>
+                                        <small>{item.desc}</small>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
 

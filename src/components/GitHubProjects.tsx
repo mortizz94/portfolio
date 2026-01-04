@@ -1,6 +1,6 @@
-
 import { useEffect, useState } from 'react';
 import { GitBranch, Github } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 interface Repo {
     id: number;
@@ -13,6 +13,7 @@ interface Repo {
 }
 
 const GitHubProjects = () => {
+    const { t } = useLanguage();
     const [projects, setProjects] = useState<Repo[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -36,31 +37,25 @@ const GitHubProjects = () => {
             });
     }, []);
 
-    const overrides: Record<string, { desc: string, tags: string[] }> = {
-        'portfolio': {
-            desc: 'Sitio web personal diseñado para velocidad y minimalismo. Desplegado en Cloudflare.',
-            tags: ['HTML5', 'CSS3', 'JavaScript', 'Cloudflare']
-        }
-    };
+    // Access overrides from the current language context
+    const overrides = t.projects.db_projects;
 
     return (
         <section id="projects" className="section">
             <div className="container">
                 <div className="section-title-wrapper fade-up">
-                    <h2>Proyectos Destacados</h2>
-                    <p>Selección de trabajos y colaboraciones Open Source.</p>
+                    <h2>{t.projects.title}</h2>
+                    <p>{t.projects.subtitle}</p>
                 </div>
 
                 <div id="github-projects" className="skills-grid fade-up">
-                    {loading && <p style={{ textAlign: 'center', width: '100%', gridColumn: '1 / -1', color: 'var(--text-secondary)' }}>Cargando proyectos...</p>}
+                    {loading && <p style={{ textAlign: 'center', width: '100%', gridColumn: '1 / -1', color: 'var(--text-secondary)' }}>{t.projects.loading}</p>}
 
-                    {error && <p style={{ color: '#ef4444', gridColumn: '1 / -1', textAlign: 'center' }}>No se pudieron cargar los proyectos.</p>}
+                    {error && <p style={{ color: '#ef4444', gridColumn: '1 / -1', textAlign: 'center' }}>{t.projects.error}</p>}
 
                     {!loading && !error && projects.map(repo => {
                         const isOverride = overrides[repo.name];
                         const description = isOverride ? isOverride.desc : (repo.description || 'Sin descripción disponible.');
-                        // Tags logic: if override, use it. If not, use language.
-                        // Original code had logic: let tagsHtml = repo.language ? `<span>${repo.language}</span>` : '';
 
                         return (
                             <div key={repo.id} className="skill-card">
@@ -81,7 +76,7 @@ const GitHubProjects = () => {
                                 </div>
                                 <div className="project-actions" style={{ marginTop: '1.5rem', borderTop: '1px solid var(--border-color)', paddingTop: '1.2rem' }}>
                                     <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ width: '100%', textAlign: 'center', justifyContent: 'center', fontSize: '0.9rem', padding: '0.6rem' }}>
-                                        Ver Código <Github size={16} style={{ marginLeft: '8px' }} />
+                                        {t.hero.cta.projects === 'View Projects' ? 'View Code' : 'Ver Código'} <Github size={16} style={{ marginLeft: '8px' }} />
                                     </a>
                                 </div>
                             </div>

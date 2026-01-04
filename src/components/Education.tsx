@@ -1,47 +1,45 @@
-
 import { Server, Monitor, Award, FileCode } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 const Education = () => {
+    const { t } = useLanguage();
+
+    const getIcon = (title: string) => {
+        if (title.includes('ASIR')) return <Server size={24} />;
+        if (title.includes('SMR')) return <Monitor size={24} />;
+        return <Award size={24} />;
+    };
+
     return (
         <section id="education" className="section">
             <div className="container">
                 <div className="section-title-wrapper fade-up">
-                    <h2>Formación y Certificaciones</h2>
+                    <h2>{t.education.title}</h2>
                 </div>
 
                 <div className="edu-grid fade-up">
-                    <div className="edu-card">
-                        <div className="icon-box"><Server size={24} /></div>
-                        <h4>Técnico Superior ASIR</h4>
-                        <p className="school">IES Leonardo da Vinci (2014 - 2016)</p>
-                        <p className="desc">Administración de Sistemas Informáticos en Red</p>
-                        <ul className="edu-list-detail">
-                            <li>Administración de S.O. (Windows Server, Linux Deb/RPM).</li>
-                            <li>Servicios de Red (DNS, DHCP, LDAP, HTTP).</li>
-                            <li>Gestión de Bases de Datos (MySQL, Oracle).</li>
-                            <li>Seguridad y Alta Disponibilidad.</li>
-                        </ul>
-                    </div>
-                    <div className="edu-card">
-                        <div className="icon-box"><Monitor size={24} /></div>
-                        <h4>Técnico SMR</h4>
-                        <p className="school">IES Cañada de la Encina (2012 - 2014)</p>
-                        <p className="desc">Sistemas Microinformáticos y Redes</p>
-                        <ul className="edu-list-detail">
-                            <li>Montaje y Mantenimiento de Equipos.</li>
-                            <li>Redes Locales y Seguridad Básica.</li>
-                            <li>Aplicaciones Ofimáticas y Web.</li>
-                        </ul>
-                    </div>
+                    {t.education.items.map((item, idx) => (
+                        <div key={idx} className="edu-card">
+                            <div className="icon-box">{getIcon(item.title)}</div>
+                            <h4>{item.title}</h4>
+                            <p className="school">{item.school}</p>
+                            <p className="desc">{item.desc}</p>
+                            <ul className="edu-list-detail">
+                                {item.details && item.details.map((detail, dIdx) => (
+                                    <li key={dIdx}>{detail}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))}
+
                     <div className="cert-card">
-                        <h4>Certificaciones & Cursos</h4>
+                        <h4>{t.education.title.includes('Formación') ? 'Certificaciones & Cursos' : 'Certifications & Courses'}</h4>
                         <ul className="cert-list">
-                            <li><Award size={16} /> Amazon Web Services (AWS) | Data Analytics Fundamentals</li>
-                            <li><Award size={16} /> Google Actívate | Cloud Computing</li>
-                            <li><Award size={16} /> LPI | Linux Essentials Professional Development</li>
-                            <li><Award size={16} /> Cisco | IT Essentials: PC Hardware and Software</li>
-                            <li><Award size={16} /> Mastermind | Cómo protegerse en la red</li>
-                            <li><FileCode size={16} /> Google | Intro al Desarrollo Web (HTML/CSS)</li>
+                            {t.education.certs.map((cert, idx) => (
+                                <li key={idx}>
+                                    {cert.name.includes('HTML') ? <FileCode size={16} /> : <Award size={16} />} {cert.name}
+                                </li>
+                            ))}
                         </ul>
                     </div>
                 </div>

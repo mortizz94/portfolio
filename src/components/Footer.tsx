@@ -80,7 +80,7 @@ const Footer = () => {
             </div>
 
             <div className="footer-bottom-simple" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
-                <div>&copy; 2026 Diego Martínez Ortiz</div>
+                <div>&copy; 2026 Diego Martínez Ortiz <span style={{ opacity: 0.5, fontSize: '0.75rem', marginLeft: '8px' }}>v1.0.0</span></div>
                 <div style={{ fontSize: '0.8rem', opacity: 0.7 }}>
                     <button onClick={() => openLegal('aviso-legal')} className="text-button">Aviso Legal</button>
                     {' | '}

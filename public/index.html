@@ -44,6 +44,13 @@
         Diego<span class="blue-dot">.</span>
       </a>
 
+      <!-- Hamburger Menu Button -->
+      <button class="hamburger-menu" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
       <div class="nav-links">
         <a href="#operational-core" class="nav-link"><span>Trayectoria</span></a>
         <a href="#skills" class="nav-link"><span>Habilidades</span></a>
@@ -521,29 +528,18 @@
 
 
 
-  <!-- Mobile Bottom Navigation -->
-  <nav class="mobile-bottom-nav">
-    <a href="#top" class="nav-item active">
-      <i class="fas fa-home"></i>
-      <span>Inicio</span>
-    </a>
-    <a href="#operational-core" class="nav-item">
-      <i class="fas fa-briefcase"></i>
-      <span>Exp</span>
-    </a>
-    <a href="#skills" class="nav-item">
-      <i class="fas fa-code"></i>
-      <span>Skills</span>
-    </a>
-    <a href="#projects" class="nav-item">
-      <i class="fas fa-folder-open"></i>
-      <span>Proyectos</span>
-    </a>
-    <a href="#contact" class="nav-item">
-      <i class="fas fa-paper-plane"></i>
-      <span>Contacto</span>
-    </a>
-  </nav>
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay">
+    <div class="mobile-menu-content">
+      <a href="#operational-core" class="mobile-link" onclick="toggleMenu()">Trayectoria</a>
+      <a href="#skills" class="mobile-link" onclick="toggleMenu()">Habilidades</a>
+      <a href="#projects" class="mobile-link" onclick="toggleMenu()">Proyectos</a>
+      <a href="#services" class="mobile-link" onclick="toggleMenu()">Servicios</a>
+      <a href="#innovation" class="mobile-link" onclick="toggleMenu()">Cloud & AI</a>
+      <a href="#education" class="mobile-link" onclick="toggleMenu()">Formación</a>
+      <a href="#contact" class="mobile-link highlight" onclick="toggleMenu()">Contactar</a>
+    </div>
+  </div>
 
   <!-- Back to Top -->
   <a href="#top" class="back-to-top" id="backToTop">

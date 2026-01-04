@@ -81,58 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* Mobile Bottom Nav Logic */
-    const navItems = document.querySelectorAll('.mobile-bottom-nav .nav-item');
-    const sections = document.querySelectorAll('section, header#top, footer#contact');
-
-    function setActiveNav() {
-        let current = '';
-        const scrollPosition = window.scrollY + (window.innerHeight / 2); // Center of viewport
-
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        // Special case for 'home' / top
-        if (window.scrollY < 100) current = 'top';
-
-        navItems.forEach(item => {
-            item.classList.remove('active');
-            const href = item.getAttribute('href').substring(1);
-            if (href === current) {
-                item.classList.add('active');
-            }
-            // Map specific sections to nav items (e.g., 'operational-core' -> Exp icon)
-            if (current === 'operational-core' && href === 'operational-core') item.classList.add('active');
-            if ((current === 'education' || current === 'innovation') && href === 'skills') item.classList.add('active');
-        });
-    }
-
-    window.addEventListener('scroll', setActiveNav);
-
-    // Smooth scroll offset for fixed bottom nav
-    navItems.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            if (targetSection) {
-                window.scrollTo({
-                    top: targetSection.offsetTop - 20, // Small buffer
-                    behavior: 'smooth'
-                });
-            }
-
-            // Manual active set for instant feedback
-            navItems.forEach(n => n.classList.remove('active'));
-            link.classList.add('active');
-        });
-    });
+    /* Mobile Bottom Nav Logic REMOVED */
 
 
     // ... existing code ...
@@ -198,5 +147,101 @@ document.addEventListener('DOMContentLoaded', () => {
                 projectsContainer.innerHTML = '<p style="color: #ef4444; grid-column: 1/-1; text-align: center;">No se pudieron cargar los proyectos. Revisa la consola o intenta más tarde.</p>';
             });
     }
+
+    /* Legal Modal Logic */
+    const legalContent = {
+        'aviso-legal': `
+            <h2 id="aviso-legal">Aviso Legal (LSSI)</h2>
+            <p>En cumplimiento de la Ley 34/2002, de 11 de julio, de servicios de la sociedad de la información y de comercio electrónico (LSSI), se facilitan a continuación los datos de información general de este sitio web:</p>
+            <ul>
+                <li><strong>Titular:</strong> Diego Martínez Ortiz</li>
+                <li><strong>NIF/DNI:</strong> <span class="placeholder">[INTRODUCIR DNI]</span></li>
+                <li><strong>Domicilio:</strong> <span class="placeholder">[INTRODUCIR DIRECCIÓN]</span>, Albacete, España</li>
+                <li><strong>Email de contacto:</strong> contact@glutendo.com</li>
+            </ul>
+        `,
+        'privacidad': `
+            <h2 id="privacidad">Política de Privacidad (RGPD)</h2>
+            <p>De conformidad con el Reglamento (UE) 2016/679 (RGPD) y la Ley Orgánica 3/2018 (LOPDGDD), le informamos que este sitio web <strong>no utiliza formularios de recogida de datos</strong> ni bases de datos persistentes.</p>
+            <p>Si usted contacta a través del correo electrónico facilitado, su dirección se utilizará únicamente para responder a su consulta y no será incorporada a ficheros comerciales sin su consentimiento expreso.</p>
+        `,
+        'cookies': `
+            <h2 id="cookies">Política de Cookies</h2>
+            <p>Este sitio web puede utilizar cookies técnicas esenciales para su funcionamiento (como las de Cloudflare para seguridad). No utilizamos cookies de terceros, publicitarias ni de análisis de comportamiento sin su consentimiento previo.</p>
+            <p>Dado que es un portfolio estático alojado en Cloudflare Pages, las cookies presentes son estrictamente necesarias para la seguridad y el balanceo de carga del servidor.</p>
+        `
+    };
+
+    const legalModal = document.getElementById('legal-modal');
+    const legalBody = document.getElementById('legal-content-body');
+    const closeModal = document.querySelector('.close-modal');
+
+    // Open Modal logic
+    document.querySelectorAll('a[href^="legal.html"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const href = link.getAttribute('href');
+            // Extract hash part "aviso-legal" from "legal.html#aviso-legal"
+            const type = href.split('#')[1];
+
+            if (legalContent[type]) {
+                legalBody.innerHTML = legalContent[type];
+                legalModal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            }
+        });
+    });
+
+    // Close Logic
+    if (closeModal) {
+        closeModal.addEventListener('click', () => {
+            legalModal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    }
+
+    // Close on outside click
+    if (legalModal) {
+        legalModal.addEventListener('click', (e) => {
+            if (e.target === legalModal) {
+                legalModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+        });
+    }
+
+    /* Hamburger Menu Logic */
+    const hamburgerBtn = document.querySelector('.hamburger-menu');
+    const mobileOverlay = document.querySelector('.mobile-menu-overlay');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    if (hamburgerBtn && mobileOverlay) {
+        // Toggle Menu
+        hamburgerBtn.addEventListener('click', () => {
+            hamburgerBtn.classList.toggle('active');
+            mobileOverlay.classList.toggle('active');
+            document.body.style.overflow = mobileOverlay.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close on Link Click
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburgerBtn.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    }
+
+    // Global toggleMenu function backup if onclick is used
+    window.toggleMenu = function () {
+        if (hamburgerBtn && mobileOverlay) {
+            hamburgerBtn.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    };
+
 
 });

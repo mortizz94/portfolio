@@ -134,4 +134,69 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+
+    // ... existing code ...
+
+    /* GitHub Projects Fetcher */
+    const projectsContainer = document.getElementById('github-projects');
+    if (projectsContainer) {
+        fetch('https://api.github.com/users/mortizz94/repos?sort=updated&per_page=6')
+            .then(response => response.json())
+            .then(repos => {
+                if (!Array.isArray(repos)) throw new Error('Invalid response');
+
+                // Clear loading text
+                projectsContainer.innerHTML = '';
+
+                repos.forEach(repo => {
+                    // Skip forks if desired, or just show all
+                    // if (repo.fork) return;
+
+                    const card = document.createElement('div');
+                    card.className = 'skill-card';
+                    card.style.transitionDelay = '100ms'; // Stagger effect placeholder
+
+                    // Manual Overrides
+                    const overrides = {
+                        'portfolio': {
+                            desc: 'Sitio web personal diseñado para velocidad y minimalismo. Desplegado en Cloudflare.',
+                            tags: ['HTML5', 'CSS3', 'JavaScript', 'Cloudflare']
+                        }
+                    };
+
+                    let description = repo.description ? repo.description : 'Sin descripción disponible.';
+                    let tagsHtml = repo.language ? `<span>${repo.language}</span>` : '';
+
+                    if (overrides[repo.name]) {
+                        description = overrides[repo.name].desc;
+                        tagsHtml = overrides[repo.name].tags.map(t => `<span>${t}</span>`).join('');
+                    }
+
+                    card.innerHTML = `
+                        <div class="skill-header">
+                            <i class="fas fa-code-branch" style="color: var(--accent);"></i>
+                            <h3 style="font-size: 1.1rem;">${repo.name}</h3>
+                        </div>
+                        <p class="project-desc" style="min-height: 60px;">
+                            ${description}
+                        </p>
+                        <div class="skill-tags">
+                            ${tagsHtml}
+                            <span>${new Date(repo.updated_at).getFullYear()}</span>
+                        </div>
+                        <div class="project-actions" style="margin-top: 1.5rem; border-top: 1px solid var(--border-color); padding-top: 1.2rem;">
+                            <a href="${repo.html_url}" target="_blank" class="btn-primary" style="width: 100%; text-align: center; justify-content: center; font-size: 0.9rem; padding: 0.6rem;">
+                                Ver Código <i class="fab fa-github" style="margin-left: 8px;"></i>
+                            </a>
+                        </div>
+                    `;
+                    projectsContainer.appendChild(card);
+                });
+            })
+            .catch(err => {
+                console.error('Error loading GitHub projects:', err);
+                projectsContainer.innerHTML = '<p style="color: #ef4444; grid-column: 1/-1; text-align: center;">No se pudieron cargar los proyectos. Revisa la consola o intenta más tarde.</p>';
+            });
+    }
+
 });

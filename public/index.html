@@ -47,6 +47,8 @@
       <div class="nav-links">
         <a href="#operational-core" class="nav-link"><span>Trayectoria</span></a>
         <a href="#skills" class="nav-link"><span>Habilidades</span></a>
+        <a href="#projects" class="nav-link"><span>Proyectos</span></a>
+        <a href="#services" class="nav-link"><span>Servicios</span></a>
         <a href="#innovation" class="nav-link"><span>Cloud & AI</span></a>
         <a href="#education" class="nav-link"><span>Formación</span></a>
       </div>
@@ -63,16 +65,16 @@
       <div class="hero-grid">
         <div class="hero-info animate-left">
           <div class="badge-tech">
-            <i class="fas fa-terminal"></i> SYSADMIN & NETWORK OPS LEAD
+            <i class="fas fa-terminal"></i> SENIOR OPS LEAD & SRE
           </div>
           <h1 class="hero-title">
             Hola, soy <br>
             <span class="highlight-text">Diego Martínez</span>
           </h1>
           <p class="hero-desc">
-            Especialista N2 en Telecomunicaciones (Vodafone).
-            Garanto la continuidad de negocio mediante <strong>liderazgo técnico</strong>,
-            resolución de incidencias complejas y operaciones críticas.
+            Senior Operations Lead en Vodafone.
+            Garantizo la <strong>alta disponibilidad</strong> y la eficiencia operativa mediante liderazgo técnico,
+            automatización y gestión de incidencias en infraestructuras críticas.
           </p>
 
           <div class="hero-metrics">
@@ -298,6 +300,69 @@
     </div>
   </section>
 
+  <!-- PROJECTS SECTION -->
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="section-title-wrapper fade-up">
+        <h2>Proyectos Destacados</h2>
+        <p>Selección de trabajos y colaboraciones Open Source.</p>
+      </div>
+
+      <div id="github-projects" class="skills-grid fade-up">
+        <p style="text-align: center; color: var(--text-secondary); width: 100%; grid-column: 1 / -1;">Cargando
+          proyectos públicos de GitHub...</p>
+      </div>
+  </section>
+
+  <!-- SERVICES SECTION -->
+  <section id="services" class="section dark-section">
+    <div class="container">
+      <div class="section-title-wrapper fade-up">
+        <h2>Servicios Web</h2>
+        <p>Soluciones digitales a medida para particulares y empresas.</p>
+      </div>
+
+      <div class="timeline-container service-timeline-container">
+        <!-- Service Card -->
+        <div class="job-card featured fade-up service-card">
+          <div class="job-header">
+            <div class="job-role">
+              <h3><i class="fas fa-rocket service-icon"></i> Desarrollo Web
+                Completo</h3>
+              <div class="sub-header">
+                <span class="company">Webs Estáticas & Landing Pages</span>
+              </div>
+            </div>
+            <span class="date-badge service-badge">Disponible
+              Ahora</span>
+          </div>
+          <div class="job-body">
+            <p class="summary">
+              Ofrezco un servicio integral de creación de sitios web estáticos, ideales para portfolios, pequeños
+              negocios, o páginas de aterrizaje (Landing Pages) de alto rendimiento.
+            </p>
+            <div class="details-grid">
+              <ul>
+                <li><strong>Dominio Personalizado:</strong> Gestión y configuración de tu nombre en internet.</li>
+                <li><strong>Diseño & Desarrollo:</strong> Creación de la web a medida, optimizada para móviles
+                  (Responsive) y buscadores (SEO).</li>
+                <li><strong>Alojamiento (Hosting):</strong> Despliegue en plataformas rápidas y seguras.</li>
+              </ul>
+              <ul>
+                <li><strong>Mantenimiento:</strong> Actualizaciones de contenido y seguridad básica.</li>
+                <li><strong>Velocidad:</strong> Sitios ultra-rápidos que cargan al instante.</li>
+                <li><strong>Soporte:</strong> Asesoramiento técnico directo.</li>
+              </ul>
+            </div>
+            <div class="cta-container">
+              <a href="#contact" class="btn-primary">Solicitar Presupuesto</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- INNOVATION: Integration with Cloudflare & AI -->
   <section id="innovation" class="section dark-section">
     <div class="container">
@@ -443,8 +508,14 @@
       </div>
     </div>
 
-    <div class="footer-bottom-simple">
-      &copy; 2026 Diego Martínez Ortiz
+    <div class="footer-bottom-simple" style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+      <div>&copy; 2026 Diego Martínez Ortiz</div>
+      <div style="font-size: 0.8rem; opacity: 0.7;">
+        <a href="legal.html#aviso-legal" style="color: inherit; text-decoration: none; margin: 0 10px;">Aviso Legal</a>
+        |
+        <a href="legal.html#privacidad" style="color: inherit; text-decoration: none; margin: 0 10px;">Privacidad</a> |
+        <a href="legal.html#cookies" style="color: inherit; text-decoration: none; margin: 0 10px;">Cookies</a>
+      </div>
     </div>
   </footer>
 
@@ -464,6 +535,10 @@
       <i class="fas fa-code"></i>
       <span>Skills</span>
     </a>
+    <a href="#projects" class="nav-item">
+      <i class="fas fa-folder-open"></i>
+      <span>Proyectos</span>
+    </a>
     <a href="#contact" class="nav-item">
       <i class="fas fa-paper-plane"></i>
       <span>Contacto</span>
@@ -474,6 +549,16 @@
   <a href="#top" class="back-to-top" id="backToTop">
     <i class="fas fa-arrow-up"></i>
   </a>
+
+  <!-- Legal Modal Overlay -->
+  <div id="legal-modal" class="legal-modal">
+    <div class="legal-modal-content">
+      <button class="close-modal">&times;</button>
+      <div id="legal-content-body">
+        <!-- Content injected by JS -->
+      </div>
+    </div>
+  </div>
 
   <script src="js/main.js"></script>
 </body>

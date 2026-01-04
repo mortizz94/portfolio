@@ -1,0 +1,11 @@
+{
+    "name": "portfolio-diego",
+    "version": "1.0.0",
+    "description": "Portfolio Personal - Diego Martínez Ortiz",
+    "scripts": {
+        "deploy": "wrangler pages deploy public --project-name portfolio-diego"
+    },
+    "devDependencies": {
+        "wrangler": "^3.0.0"
+    }
+}

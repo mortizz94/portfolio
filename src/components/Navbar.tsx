@@ -1,18 +1,14 @@
 import { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { Languages } from 'lucide-react';
+
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const { t, language, setLanguage } = useLanguage();
+    const { t } = useLanguage();
     // Theme is always dark, no need to access context for toggling
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
     const closeMenu = () => setIsMenuOpen(false);
-
-    const toggleLang = () => {
-        setLanguage(language === 'es' ? 'en' : 'es');
-    };
 
     return (
         <nav className="nav-container">
@@ -45,10 +41,6 @@ const Navbar = () => {
                 </div>
 
                 <div className="nav-right">
-                    <button onClick={toggleLang} className="lang-toggle-btn" title="Switch Language">
-                        <Languages size={18} />
-                        <span style={{ fontSize: '0.8rem', fontWeight: 600 }}>{language.toUpperCase()}</span>
-                    </button>
                     <a href="#contact" className="btn-open-work-pill">{t.nav.contact}</a>
                 </div>
             </div>
@@ -63,11 +55,7 @@ const Navbar = () => {
                     <a href="#innovation" className="mobile-link" onClick={closeMenu}>{t.nav.cloud_ai}</a>
                     <a href="#education" className="mobile-link" onClick={closeMenu}>{t.nav.education}</a>
 
-                    <div className="mobile-actions" style={{ display: 'flex', gap: '1.5rem', marginTop: '1rem' }}>
-                        <button onClick={() => { toggleLang(); closeMenu(); }} className="mobile-link" style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <Languages size={24} /> {language === 'es' ? 'Español' : 'English'}
-                        </button>
-                    </div>
+
 
                     <a href="#contact" className="mobile-link highlight" onClick={closeMenu}>{t.nav.contact}</a>
                 </div>

@@ -1,36 +1,21 @@
 
-import { createContext, useContext, useState, type ReactNode, useEffect } from 'react';
+import { createContext, useContext, type ReactNode } from 'react';
 import { content, type Language } from '../data';
 import type { Content } from '../data/types';
 
 interface LanguageContextType {
     language: Language;
-    setLanguage: (lang: Language) => void;
     t: Content;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-    const [language, setLanguageState] = useState<Language>(() => {
-        const saved = localStorage.getItem('language') as Language;
-        if (saved && (saved === 'es' || saved === 'en')) return saved;
-
-        // Auto-detect
-        const browserLang = navigator.language.split('-')[0];
-        return browserLang === 'es' ? 'es' : 'en'; // Default to English if not Spanish
-    });
-
-    useEffect(() => {
-        localStorage.setItem('language', language);
-    }, [language]);
-
-    const setLanguage = (lang: Language) => {
-        setLanguageState(lang);
-    };
+    // Language is always 'es'
+    const language: Language = 'es';
 
     return (
-        <LanguageContext.Provider value={{ language, setLanguage, t: content[language] }}>
+        <LanguageContext.Provider value={{ language, t: content[language] }}>
             {children}
         </LanguageContext.Provider>
     );

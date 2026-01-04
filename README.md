@@ -9,7 +9,7 @@ Portfolio profesional desarrollado con **React**, **TypeScript** y **Vite**. Dis
 
 - **Arquitectura Moderna:** Single Page Application (SPA) construida con React 19 y TypeScript.
 - **Rendimiento:** Optimizado con Vite para cargas instantáneas.
-- **Internacionalización (i18n):** Soporte completo para Inglés (EN) y Español (ES) mediante Context API.
+
 - **Integraciones:**
   - **GitHub API:** Visualización dinámica de repositorios destacados.
   - **Lucide React:** Iconografía moderna y ligera.

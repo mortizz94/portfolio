@@ -1,12 +1,14 @@
 import { useState } from 'react';
-import { Mail, ArrowRight, Github, Linkedin, Share2 } from 'lucide-react';
+import { Mail, ArrowRight, Github, Linkedin, Share2, ShieldAlert } from 'lucide-react';
 import LegalModal from './LegalModal';
 import { useLanguage } from '../context/LanguageContext';
+import { useTheme } from '../context/ThemeContext';
 
 const Footer = () => {
     const [legalOpen, setLegalOpen] = useState(false);
     const [legalType, setLegalType] = useState<'aviso-legal' | 'privacidad' | 'cookies' | null>(null);
     const { t } = useLanguage();
+    const { theme, setTheme } = useTheme();
 
     const openLegal = (type: 'aviso-legal' | 'privacidad' | 'cookies') => {
         setLegalType(type);
@@ -28,6 +30,10 @@ const Footer = () => {
         } else {
             alert('Compartir no soportado en este navegador.');
         }
+    };
+
+    const toggleMilitary = () => {
+        setTheme(theme === 'default' ? 'military' : 'default');
     };
 
     return (
@@ -93,6 +99,25 @@ const Footer = () => {
                     {' | '}
                     <button onClick={() => openLegal('cookies')} className="text-button">{t.legal.cookies.title}</button>
                 </div>
+                {/* Secret Toggle */}
+                <button
+                    onClick={toggleMilitary}
+                    style={{
+                        opacity: 0.3,
+                        border: 'none',
+                        background: 'none',
+                        color: 'inherit',
+                        cursor: 'pointer',
+                        marginTop: '1rem',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '4px',
+                        fontSize: '0.7rem'
+                    }}
+                    title="Switch Protocol"
+                >
+                    <ShieldAlert size={12} /> {theme === 'default' ? 'v2.0' : 'Revert'}
+                </button>
             </div>
 
             <LegalModal isOpen={legalOpen} onClose={closeLegal} type={legalType} />

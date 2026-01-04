@@ -1,24 +1,36 @@
-import { createContext, useContext, useEffect, type ReactNode } from 'react';
+import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 
-type Theme = 'dark';
+type Theme = 'default' | 'military';
 
 interface ThemeContextType {
     theme: Theme;
+    setTheme: (theme: Theme) => void;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-    const theme: Theme = 'dark';
+    const [theme, setThemeState] = useState<Theme>(() => {
+        const saved = localStorage.getItem('theme');
+        return (saved === 'default' || saved === 'military') ? (saved as Theme) : 'default';
+    });
 
     useEffect(() => {
-        // Enforce dark theme cleanup
-        localStorage.removeItem('theme');
-        document.documentElement.classList.remove('light-theme');
-    }, []);
+        localStorage.setItem('theme', theme);
+        // Reset classes
+        document.documentElement.classList.remove('military-theme');
+
+        if (theme === 'military') {
+            document.documentElement.classList.add('military-theme');
+        }
+    }, [theme]);
+
+    const setTheme = (newTheme: Theme) => {
+        setThemeState(newTheme);
+    };
 
     return (
-        <ThemeContext.Provider value={{ theme }}>
+        <ThemeContext.Provider value={{ theme, setTheme }}>
             {children}
         </ThemeContext.Provider>
     );

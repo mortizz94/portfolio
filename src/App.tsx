@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import { ArrowUp } from 'lucide-react';
 import Navbar from './components/Navbar';
@@ -11,7 +10,12 @@ import Innovation from './components/Innovation';
 import Education from './components/Education';
 import Footer from './components/Footer';
 
+// New Imports
+import { useTheme } from './context/ThemeContext';
+import MilitaryMode from './components/MilitaryMode';
+
 function App() {
+  const { theme } = useTheme();
 
   useEffect(() => {
     // Scroll Reveal Observer
@@ -42,6 +46,11 @@ function App() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  // Military Override
+  if (theme === 'military') {
+    return <MilitaryMode />;
+  }
 
   return (
     <>

@@ -29,6 +29,55 @@
   box-sizing: border-box;
 }
 
+/* Military Theme (v2) */
+.military-theme {
+  --bg-main: #1a1c18;
+  /* Dark Olive */
+  --bg-secondary: #242922;
+  /* Lighter Olive */
+  --bg-panel: #2a3026;
+
+  --text-primary: #e0e6dd;
+  /* Off-white / Beige */
+  --text-secondary: #8da388;
+  /* Muted Green */
+
+  --accent: #7fb965;
+  /* Tactical Green */
+  --accent-glow: rgba(127, 185, 101, 0.2);
+
+  --border-color: #3e4d38;
+  --code-bg: #11140f;
+
+  --font-heading: 'JetBrains Mono', monospace;
+  /* Force Mono */
+  --font-body: 'JetBrains Mono', monospace;
+}
+
+/* Specific Military Overrides */
+.military-theme .nav-floating-pill {
+  border-radius: 4px;
+  /* Sharper edges */
+  border: 1px solid var(--accent);
+}
+
+.military-theme .btn-primary,
+.military-theme .btn-secondary,
+.military-theme .btn-open-work-pill {
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.military-theme .skill-tags span {
+  border-radius: 2px;
+}
+
+.military-theme .hero-title {
+  text-transform: uppercase;
+  letter-spacing: -2px;
+}
+
 html {
   scroll-behavior: smooth;
 }

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Mail, ArrowRight, Github, Linkedin, Share2, ShieldAlert } from 'lucide-react';
+import { Mail, ArrowRight, Github, Linkedin, Share2, Sparkles } from 'lucide-react';
 import LegalModal from './LegalModal';
 import { useLanguage } from '../context/LanguageContext';
 import { useTheme } from '../context/ThemeContext';
@@ -32,8 +32,8 @@ const Footer = () => {
         }
     };
 
-    const toggleMilitary = () => {
-        setTheme(theme === 'default' ? 'military' : 'default');
+    const toggleAurora = () => {
+        setTheme(theme === 'default' ? 'aurora' : 'default');
     };
 
     return (
@@ -101,7 +101,7 @@ const Footer = () => {
                 </div>
                 {/* Secret Toggle */}
                 <button
-                    onClick={toggleMilitary}
+                    onClick={toggleAurora}
                     style={{
                         opacity: 0.3,
                         border: 'none',
@@ -114,9 +114,9 @@ const Footer = () => {
                         gap: '4px',
                         fontSize: '0.7rem'
                     }}
-                    title="Switch Protocol"
+                    title="Switch Visuals"
                 >
-                    <ShieldAlert size={12} /> {theme === 'default' ? 'v2.0' : 'Revert'}
+                    <Sparkles size={12} /> {theme === 'default' ? 'v2.0 Aurora' : 'Revert'}
                 </button>
             </div>
 

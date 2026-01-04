@@ -9,10 +9,9 @@ import Services from './components/Services';
 import Innovation from './components/Innovation';
 import Education from './components/Education';
 import Footer from './components/Footer';
-
 // New Imports
 import { useTheme } from './context/ThemeContext';
-import MilitaryMode from './components/MilitaryMode';
+import AuroraMode from './components/AuroraMode';
 
 function App() {
   const { theme } = useTheme();
@@ -47,9 +46,9 @@ function App() {
     };
   }, []);
 
-  // Military Override
-  if (theme === 'military') {
-    return <MilitaryMode />;
+  // Aurora Override
+  if (theme === 'aurora') {
+    return <AuroraMode />;
   }
 
   return (

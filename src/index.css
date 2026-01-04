@@ -29,53 +29,53 @@
   box-sizing: border-box;
 }
 
-/* Military Theme (v2) */
-.military-theme {
-  --bg-main: #1a1c18;
-  /* Dark Olive */
-  --bg-secondary: #242922;
-  /* Lighter Olive */
-  --bg-panel: #2a3026;
+/* Aurora Theme (v2) */
+.aurora-theme {
+  --bg-main: #050505;
+  --bg-secondary: transparent;
 
-  --text-primary: #e0e6dd;
-  /* Off-white / Beige */
-  --text-secondary: #8da388;
-  /* Muted Green */
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
 
-  --accent: #7fb965;
-  /* Tactical Green */
-  --accent-glow: rgba(127, 185, 101, 0.2);
+  --accent: #a78bfa;
+  /* Soft Purple */
+  --accent-glow: rgba(167, 139, 250, 0.3);
 
-  --border-color: #3e4d38;
-  --code-bg: #11140f;
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-users-bg: rgba(20, 20, 30, 0.4);
 
-  --font-heading: 'JetBrains Mono', monospace;
-  /* Force Mono */
-  --font-body: 'JetBrains Mono', monospace;
+  --font-heading: 'Manrope', sans-serif;
+  --font-body: 'Inter', sans-serif;
 }
 
-/* Specific Military Overrides */
-.military-theme .nav-floating-pill {
-  border-radius: 4px;
-  /* Sharper edges */
-  border: 1px solid var(--accent);
+/* Aurora Animations */
+@keyframes aurora-move {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-.military-theme .btn-primary,
-.military-theme .btn-secondary,
-.military-theme .btn-open-work-pill {
-  border-radius: 2px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
 
-.military-theme .skill-tags span {
-  border-radius: 2px;
-}
+  50% {
+    transform: translateY(-10px);
+  }
 
-.military-theme .hero-title {
-  text-transform: uppercase;
-  letter-spacing: -2px;
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 html {

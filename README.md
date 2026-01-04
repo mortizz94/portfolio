@@ -13,6 +13,7 @@ Bienvenido al repositorio de mi portafolio personal y profesional. Este proyecto
 - **Diseño Premium & Moderno:** Estética "Cyber/Tech" con paleta oscura, gradientes eléctricos y efectos de cristal (Glassmorphism).
 - **Animaciones Suaves:** Transiciones fluidas y efectos de aparición al hacer scroll (scroll-reveal).
 - **Totalmente Responsivo:** Adaptado perfectamente a móviles, tablets y escritorio.
+- **Experiencia App Nativa:** En móviles, cuenta con una barra de navegación inferior estilo aplicación y optimización táctil.
 - **Sin Dependencias Pesadas:** Construido con **Vanilla HTML, CSS y JS** para máximo rendimiento y velocidad de carga.
 - **Secciones:**
   - **Hero:** Presentación impactante con estado de disponibilidad "En línea".
@@ -43,24 +44,30 @@ Para ver este proyecto en tu máquina local:
     ```bash
     cd portfolio
     ```
-3.  **Abrir `index.html`:**
-    Simplemente abre el archivo `index.html` en tu navegador web favorito (Chrome, Firefox, Edge, etc.).
-    *Opción Recomendada:* Usa una extensión como "Live Server" en VS Code para simular un servidor local.
+3.  **Instalar dependencias:**
+    ```bash
+    npm install
+    ```
+4.  **Ejecutar localmente:**
+    ```bash
+    npx wrangler dev
+    ```
+5.  **Desplegar a Cloudflare:**
+    ```bash
+    npm run deploy
+    ```
 
 ## 📂 Estructura del Proyecto
 
-```
 /
-├── assets/
-│   ├── img/          # Imágenes (perfil, favicon, etc.)
-│   └── cv_*.pdf      # Currículum Vitae descargable
-├── css/
-│   └── styles.css    # Estilos globales y componentes
-├── js/
-│   └── main.js       # Comportamiento e interactividad
-├── index.html        # Estructura principal
+├── public/           # Archivos estáticos del sitio
+│   ├── assets/       # Imágenes y recursos
+│   ├── css/          # Estilos
+│   ├── js/           # Lógica
+│   └── index.html    # Entrada principal
+├── wrangler.json     # Configuración de Cloudflare Workers
+├── package.json      # Dependencias y scripts
 └── README.md         # Documentación
-```
 
 ## 📬 Contacto
 

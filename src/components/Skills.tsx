@@ -19,16 +19,20 @@ const Skills = () => {
                     <p>{t.skills.subtitle}</p>
                 </div>
 
-                <div className="skills-grid fade-up">
+                <div className="skills-grid-premium">
                     {t.skills.categories.map((category, idx) => (
-                        <div key={idx} className="skill-card">
-                            <div className="skill-header">
+                        <div key={idx} className="glass-card skill-card-premium fade-up" style={{ animationDelay: `${idx * 100}ms` }}>
+                            <div className="card-shine"></div>
+                            <div className="skill-icon-wrapper">
                                 {getIcon(category.title)}
-                                <h3>{category.title}</h3>
                             </div>
-                            <div className="skill-tags">
+                            <h3>{category.title}</h3>
+                            <div className="skill-tags-cloud">
                                 {category.skills.map((skill, sIdx) => (
-                                    <span key={sIdx}>{skill.name}</span>
+                                    <span key={sIdx} className="premium-tag">
+                                        {skill.name}
+                                        <div className="tag-glow"></div>
+                                    </span>
                                 ))}
                             </div>
                         </div>

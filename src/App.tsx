@@ -6,18 +6,17 @@ import Experience from './components/Experience';
 import Skills from './components/Skills';
 import GitHubProjects from './components/GitHubProjects';
 import Services from './components/Services';
-import Innovation from './components/Innovation';
+
 import Education from './components/Education';
 import Footer from './components/Footer';
 // New Imports
-import { useTheme } from './context/ThemeContext';
-import AuroraMode from './components/AuroraMode';
+
 
 function App() {
-  const { theme } = useTheme();
+
 
   useEffect(() => {
-    // Scroll Reveal Observer
+    // Global Scroll Animation Observer
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -46,10 +45,8 @@ function App() {
     };
   }, []);
 
-  // Aurora Override
-  if (theme === 'aurora') {
-    return <AuroraMode />;
-  }
+
+
 
   return (
     <>
@@ -61,7 +58,7 @@ function App() {
         <Skills />
         <GitHubProjects />
         <Services />
-        <Innovation />
+
         <Education />
       </main>
       <Footer />

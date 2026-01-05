@@ -33,6 +33,7 @@ const Education = () => {
                     ))}
 
                     <div className="cert-card">
+                        <div className="icon-box"><Award size={24} /></div>
                         <h4>{t.education.title.includes('Formación') ? 'Certificaciones & Cursos' : 'Certifications & Courses'}</h4>
                         <ul className="cert-list">
                             {t.education.certs.map((cert, idx) => (

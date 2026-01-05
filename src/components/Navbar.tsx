@@ -3,23 +3,26 @@ import { useLanguage } from '../context/LanguageContext';
 
 
 const Navbar = () => {
+    const [scrolled, setScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { t } = useLanguage();
-    // Theme is always dark, no need to access context for toggling
+
+    // Scroll effect
+    window.addEventListener('scroll', () => {
+        setScrolled(window.scrollY > 50);
+    });
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
     const closeMenu = () => setIsMenuOpen(false);
 
     return (
-        <nav className="nav-container">
-            <div className="nav-floating-pill">
+        <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+            <div className="container nav-content">
                 <a href="#top" className="nav-logo" onClick={closeMenu}>
                     Diego<span className="blue-dot">.</span>
                 </a>
 
-                {/* Controls Mobile (visible only on mobile via CSS if needed, but here we keep them accessible) */}
-                <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }} className="mobile-controls">
-                    {/* Hamburger Menu Button */}
+                <div className="mobile-controls">
                     <button
                         className={`hamburger-menu ${isMenuOpen ? 'active' : ''}`}
                         aria-label="Menu"
@@ -36,7 +39,6 @@ const Navbar = () => {
                     <a href="#skills" className="nav-link"><span>{t.nav.skills}</span></a>
                     <a href="#projects" className="nav-link"><span>{t.nav.projects}</span></a>
                     <a href="#services" className="nav-link"><span>{t.nav.services}</span></a>
-                    <a href="#innovation" className="nav-link"><span>{t.nav.cloud_ai}</span></a>
                     <a href="#education" className="nav-link"><span>{t.nav.education}</span></a>
                 </div>
 
@@ -52,10 +54,7 @@ const Navbar = () => {
                     <a href="#skills" className="mobile-link" onClick={closeMenu}>{t.nav.skills}</a>
                     <a href="#projects" className="mobile-link" onClick={closeMenu}>{t.nav.projects}</a>
                     <a href="#services" className="mobile-link" onClick={closeMenu}>{t.nav.services}</a>
-                    <a href="#innovation" className="mobile-link" onClick={closeMenu}>{t.nav.cloud_ai}</a>
                     <a href="#education" className="mobile-link" onClick={closeMenu}>{t.nav.education}</a>
-
-
 
                     <a href="#contact" className="mobile-link highlight" onClick={closeMenu}>{t.nav.contact}</a>
                 </div>

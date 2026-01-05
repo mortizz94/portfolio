@@ -7,14 +7,14 @@ export const es: Content = {
         skills: "Habilidades",
         projects: "Proyectos",
         services: "Servicios",
-        cloud_ai: "Cloud & AI",
+
         education: "Formación",
         contact: "Contactar"
     },
     hero: {
         available: "Disponible para comenzar",
-        role: "Senior Operations Lead & SysAdmin",
-        description: "Transformo infraestructura compleja en sistemas robustos, escalables y seguros. Liderazgo técnico con visión estratégica y ejecución precisa.",
+        role: "Senior SysAdmin & Network Operations Lead",
+        description: "Especialista en Infraestructura Crítica, Core Móvil (VoLTE/IMS) y Liderazgo de Equipos. Transformo infraestructuras complejas en sistemas eficientes.",
         metrics: {
             experience: "+8 Años Exp",
             projects: "+50 Proyectos",
@@ -31,16 +31,16 @@ export const es: Content = {
         items: [
             {
                 id: 1,
-                role: "Operations Team Lead & Soporte N2",
-                company: "Zelenza (Vodafone)",
-                location: "Albacete (Híbrido)",
+                role: "Operations Team Lead & Soporte N2 (Grandes Cuentas)",
+                company: "Zelenza (Proyecto Vodafone)",
+                location: "Albacete (Híbrido) | Enero 2017 – Actualidad",
                 date: "2017 - Actualidad",
                 summary: "Responsable de un equipo de 18 Operadores de Red. Liderazgo en incidencias críticas y gestión de KPIs/SLAs.",
                 details: [
-                    "Gestión de equipo y desarrollo de talento técnico.",
-                    "Resolución de incidencias de alta prioridad en red Vodafone (HFC/FTTH).",
-                    "Interlocución con cliente corporativo (Vodafone España).",
-                    "Aseguramiento de Calidad (QA) y mejora continua de procesos."
+                    "Liderazgo Técnico: Supervisión de equipos de Front/Backoffice (+20 personas).",
+                    "Soporte Crítico N2: Resolución de incidencias en red móvil (IMS, HLR, VoLTE).",
+                    "Infraestructura: Gestión de dispositivos de red y centralitas virtuales (OneNet).",
+                    "Gestión IT: Uso experto de Salesforce, Remedy BMC y Jira."
                 ]
             },
             {
@@ -51,23 +51,23 @@ export const es: Content = {
                 date: "Oct 2016 - Dic 2016",
                 summary: "Administrador de Sistemas y Desarrollador Web. Responsable integral del departamento IT.",
                 details: [
-                    "SysAdmin: Administración de equipos, LDAP, Redes.",
-                    "Automatización: Scripts de backup y mantenimiento.",
-                    "Desarrollo Web: Portal corporativo (PHP, SQL, HTML/CSS).",
-                    "Soporte Integral a usuarios."
+                    "SysAdmin: Gestión integral de red corporativa y Directorio Activo.",
+                    "Automatización: Scripts Bash/Batch para backups y mantenimiento.",
+                    "Desarrollo Web: Mantenimiento de portal corporativo (HTML, CSS, PHP, SQL).",
+                    "Modernización Digital: Responsable único del departamento IT."
                 ]
             },
             {
                 id: 3,
                 role: "Técnico de Sistemas e Infraestructura",
                 company: "APP Informática",
-                location: "Iniesta",
+                location: "Iniesta, Cuenca",
                 date: "Abr 2013 - Jul 2013",
-                summary: "Soporte técnico y mantenimiento de hardware/software para clientes finales y PYMES.",
+                summary: "Consultoría técnica y soporte a PYMES y particulares.",
                 details: [
-                    "Montaje y reparación de hardware.",
-                    "Diagnóstico de averías y recuperación de datos.",
-                    "Instalación y configuración de redes cableadas/WiFi."
+                    "Mantenimiento On-Site: Diagnóstico de redes y reparación de hardware.",
+                    "Soporte Técnico: Resolución de incidencias Windows/Linux.",
+                    "Asesoramiento tecnológico personalizado."
                 ]
             }
         ]
@@ -77,30 +77,30 @@ export const es: Content = {
         subtitle: "Stack tecnológico enfocado en fiabilidad, rendimiento y automatización.",
         categories: [
             {
-                title: "Infraestructura Core",
+                title: "Infraestructura & Sistemas",
                 skills: [
-                    { name: "Linux (RHEL/Debian)", level: 95 },
-                    { name: "Windows Server", level: 90 },
-                    { name: "Virtualización (VMware)", level: 85 },
-                    { name: "Redes (Cisco/Mikrotik)", level: 80 }
+                    { name: "Windows Server / Linux", level: 95 },
+                    { name: "Active Directory / LDAP", level: 90 },
+                    { name: "VMware / Virtualización", level: 85 },
+                    { name: "Docker / Cloud", level: 75 }
                 ]
             },
             {
-                title: "Cloud & Dev",
+                title: "Telecomunicaciones (Core)",
                 skills: [
-                    { name: "AWS / Azure", level: 75 },
-                    { name: "Docker & K8s", level: 70 },
-                    { name: "Bash & Python", level: 85 },
-                    { name: "Git & CI/CD", level: 80 }
+                    { name: "IMS / VoLTE", level: 90 },
+                    { name: "SIP / TCP/IP / VPN", level: 95 },
+                    { name: "HLR / HSS / AUC", level: 85 },
+                    { name: "Trunking IP / Centralitas", level: 85 }
                 ]
             },
             {
-                title: "Gestión & Herramientas",
+                title: "Herramientas & DevOps",
                 skills: [
-                    { name: "Jira / Remedy", level: 90 },
-                    { name: "Monitorización", level: 85 },
-                    { name: "ITIL v4", level: 80 },
-                    { name: "Liderazgo de Equipos", level: 90 }
+                    { name: "Salesforce / Remedy", level: 95 },
+                    { name: "Scripting (Bash/Python)", level: 80 },
+                    { name: "SQL / PHP / HTML", level: 85 },
+                    { name: "Git / GitHub", level: 80 }
                 ]
             }
         ]
@@ -126,11 +126,7 @@ export const es: Content = {
                 desc: "Sitios rápidos, seguros y escalables.",
                 features: ["Landing Pages de Alta Conversión", "Aplicaciones React/Next.js", "Optimización SEO (Core Vitals)"]
             },
-            {
-                title: "Consultoría Cloud & DevOps",
-                desc: "Optimización de infraestructura.",
-                features: ["Migración a la Nube (AWS/Azure)", "Pipelines CI/CD", "Contenerización (Docker)"]
-            },
+
             {
                 title: "Soporte Técnico Especializado",
                 desc: "Resolución de problemas complejos.",
@@ -163,54 +159,46 @@ export const es: Content = {
         title: "Formación y Certificaciones",
         items: [
             {
-                title: "Técnico Superior ASIR",
-                school: "IES Leonardo da Vinci (2014 - 2016)",
-                date: "2014-2016",
+                title: "Técnico Superior en Administración de Sistemas Informáticos en Red (ASIR)",
+                school: "IES Leonardo da Vinci - Albacete",
+                date: "2016",
                 desc: "Administración de Sistemas Informáticos en Red",
                 details: [
-                    "Administración de S.O. (Windows Server, Linux Deb/RPM).",
+                    "Administración de S.O. (Windows Server, Linux).",
                     "Servicios de Red (DNS, DHCP, LDAP, HTTP).",
-                    "Gestión de Bases de Datos (MySQL, Oracle).",
-                    "Seguridad y Alta Disponibilidad."
+                    "Gestión de Bases de Datos y Seguridad."
                 ]
             },
             {
-                title: "Técnico SMR",
-                school: "IES Cañada de la Encina (2012 - 2014)",
-                date: "2012-2014",
+                title: "Técnico en Sistemas Microinformáticos y Redes (SMR)",
+                school: "IES Cañada de la Encina - Iniesta",
+                date: "2013",
                 desc: "Sistemas Microinformáticos y Redes",
                 details: [
                     "Montaje y Mantenimiento de Equipos.",
                     "Redes Locales y Seguridad Básica.",
-                    "Aplicaciones Ofimáticas y Web."
+                    "Aplicaciones Ofimáticas."
                 ]
             }
         ],
         certs: [
-            { name: "Amazon Web Services (AWS) | Data Analytics Fundamentals" },
-            { name: "Google Actívate | Cloud Computing" },
-            { name: "LPI | Linux Essentials Professional Development" },
-            { name: "Cisco | IT Essentials: PC Hardware and Software" },
-            { name: "Mastermind | Cómo protegerse en la red" },
-            { name: "Google | Intro al Desarrollo Web (HTML/CSS)" }
+            { name: "Ciberseguridad: \"Cómo protegerse en la red\" (Mastermind)" },
+            { name: "Cloud: AWS Data Analytics Fundamentals" },
+            { name: "Cloud: Cloud Computing (Google)" },
+            { name: "Sistemas: Linux Essentials Professional Development (LPI)" },
+            { name: "Hardware: IT Essentials (Cisco)" }
         ]
     },
     contact: {
         title_part1: "¿Listo para",
-        title_part2_gradient: "mejorar?",
-        subtitle: "Disponible para roles de Administración de Sistemas, CloudOps y Liderazgo.",
-        availability: "Disponible: Albacete (Híbrido) o Remoto",
+        title_part2_gradient: "optimizar operaciones?",
+        subtitle: "Hablemos sobre cómo mejorar la estabilidad y eficiencia de tu infraestructura.",
+        availability: "Disponible para nuevos retos",
         actions: {
-            email: "Escríbeme",
-            code: "Ver Código",
-            connect: "Conectar",
-            share: "Difundir"
-        },
-        footer: {
-            rights: "Diego Martínez Ortiz",
-            legal: "Aviso Legal",
-            privacy: "Privacidad",
-            cookies: "Cookies"
+            email: "Envíame un correo",
+            code: "Revisa mi código",
+            connect: "Conectemos",
+            share: "Compartir perfil"
         }
     },
     legal: {

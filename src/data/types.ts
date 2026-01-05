@@ -4,7 +4,7 @@ export interface NavItems {
     skills: string;
     projects: string;
     services: string;
-    cloud_ai: string;
+
     education: string;
     contact: string;
 }
@@ -53,11 +53,7 @@ export interface ServicesItem {
     features: string[];
 }
 
-export interface InnovationItem {
-    title: string;
-    desc: string;
-    tags: string[];
-}
+
 
 export interface EducationItem {
     title: string;
@@ -71,10 +67,7 @@ export interface CertItem {
     name: string;
 }
 
-export interface LegalContent {
-    title: string;
-    content: React.ReactNode;
-}
+
 
 export interface ContactSection {
     title_part1: string;
@@ -87,12 +80,6 @@ export interface ContactSection {
         connect: string;
         share: string;
     };
-    footer: {
-        legal: string;
-        privacy: string;
-        cookies: string;
-        rights: string;
-    }
 }
 
 export interface Content {
@@ -114,20 +101,10 @@ export interface Content {
         subtitle: string;
         items: ServicesItem[];
     };
-    innovation: {
-        title: string;
-        subtitle: string;
-        items: InnovationItem[];
-    };
     education: {
         title: string;
         items: EducationItem[];
         certs: CertItem[];
     };
     contact: ContactSection;
-    legal: {
-        aviso: LegalContent;
-        privacidad: LegalContent;
-        cookies: LegalContent;
-    };
 }

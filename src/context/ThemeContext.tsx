@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
+import { createContext, useContext, useEffect, type ReactNode } from 'react';
 
 type Theme = 'default' | 'aurora';
 
@@ -10,24 +10,15 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-    const [theme, setThemeState] = useState<Theme>(() => {
-        const saved = localStorage.getItem('theme');
-        return (saved === 'default' || saved === 'aurora') ? (saved as Theme) : 'default';
-    });
+    // Force default theme
+    const theme: Theme = 'default';
 
     useEffect(() => {
-        localStorage.setItem('theme', theme);
-        // Reset classes
+        localStorage.setItem('theme', 'default');
         document.documentElement.classList.remove('aurora-theme');
+    }, []);
 
-        if (theme === 'aurora') {
-            document.documentElement.classList.add('aurora-theme');
-        }
-    }, [theme]);
-
-    const setTheme = (newTheme: Theme) => {
-        setThemeState(newTheme);
-    };
+    const setTheme = () => { }; // No-op
 
     return (
         <ThemeContext.Provider value={{ theme, setTheme }}>

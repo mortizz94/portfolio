@@ -134,27 +134,7 @@ export const es: Content = {
             }
         ]
     },
-    innovation: {
-        title: "Cloud, Web & AI Labs",
-        subtitle: "Explorando la intersección entre Operaciones, Desarrollo e Inteligencia Artificial.",
-        items: [
-            {
-                title: "IaC & Automatización",
-                desc: "Implementando Terraform y Ansible para despliegues inmutables.",
-                tags: ["Terraform", "Ansible", "GitOps"]
-            },
-            {
-                title: "Arquitecturas Serverless",
-                desc: "Desarrollo de APIs con Cloudflare Workers y AWS Lambda.",
-                tags: ["Serverless", "Edge Computing", "APIs"]
-            },
-            {
-                title: "AI Ops",
-                desc: "Integración de LLMs locales para análisis de logs automatizado.",
-                tags: ["LLM", "Python", "Automation"]
-            }
-        ]
-    },
+
     education: {
         title: "Formación y Certificaciones",
         items: [
@@ -201,16 +181,5 @@ export const es: Content = {
             share: "Compartir perfil"
         }
     },
-    legal: {
-        aviso: {
-            title: "Aviso Legal (LSSI)",
-            content: "DATOS LEGALES REALEAS PENDIENTES DE INTEGRAR" // Simplified for now, logic remains in component for full HTML or we refactor later. 
-            // Better strategy: keep the HTML structure in component but use this key for title? 
-            // Actually, for full i18n of large legal blocks, we might want to keep it simple for this iteration or return the massive string.
-            // Let's stick to the title for now and keep the content logic in component or expand later.
-            // Wait, to do it right, I should put the text here.
-        },
-        privacidad: { title: "Política de Privacidad", content: "" },
-        cookies: { title: "Política de Cookies", content: "" }
-    }
+
 };

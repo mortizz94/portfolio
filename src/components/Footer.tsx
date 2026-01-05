@@ -1,22 +1,10 @@
-import { Mail, ArrowRight, Github, Linkedin, Share2 } from 'lucide-react';
+import { Mail, Github, Linkedin } from 'lucide-react';
 
 import { useLanguage } from '../context/LanguageContext';
 import ContactForm from './ContactForm';
 
 const Footer = () => {
     const { t } = useLanguage();
-
-    const handleShare = () => {
-        if (navigator.share) {
-            navigator.share({
-                title: 'Diego | Senior Operations Lead',
-                text: 'Echa un vistazo al portfolio de Diego Martínez.',
-                url: window.location.href,
-            }).catch(console.error);
-        } else {
-            alert('Compartir no soportado en este navegador.');
-        }
-    };
 
 
 

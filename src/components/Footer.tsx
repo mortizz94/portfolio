@@ -1,7 +1,6 @@
 import { Mail, Github, Linkedin } from 'lucide-react';
 
 import { useLanguage } from '../context/LanguageContext';
-import ContactForm from './ContactForm';
 
 const Footer = () => {
     const { t } = useLanguage();
@@ -11,7 +10,6 @@ const Footer = () => {
     return (
         <footer id="contact" className="footer-section">
             <div className="container">
-                <ContactForm />
 
                 <div className="footer-content fade-up" style={{ marginTop: '3rem', display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap' }}>
                     <a href="mailto:contact@glutendo.com" className="contact-row">

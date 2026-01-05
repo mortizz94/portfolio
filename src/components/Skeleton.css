@@ -1,0 +1,55 @@
+/* Skeleton Loading Animation */
+.skeleton {
+    background: var(--bg-secondary);
+    background: linear-gradient(90deg,
+            var(--bg-secondary) 25%,
+            var(--border-color) 37%,
+            var(--bg-secondary) 63%);
+    background-size: 400% 100%;
+    animation: skeleton-loading 1.4s ease infinite;
+    border-radius: 4px;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0 50%;
+    }
+}
+
+.skeleton-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    height: 100%;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.skeleton-title {
+    height: 24px;
+    width: 60%;
+    margin-bottom: 1rem;
+}
+
+.skeleton-text {
+    height: 16px;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+.skeleton-text.short {
+    width: 80%;
+}
+
+.skeleton-footer {
+    margin-top: auto;
+    height: 36px;
+    width: 100%;
+    border-radius: 20px;
+}

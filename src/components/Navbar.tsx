@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Languages } from 'lucide-react';
+import { Languages, Sun, Moon } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { useTheme } from '../context/ThemeContext';
 import './LanguageSwitcher.css';
 
 
@@ -8,6 +9,7 @@ const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { t, language, setLanguage } = useLanguage();
+    const { theme, toggleTheme } = useTheme();
 
     // Scroll effect
     window.addEventListener('scroll', () => {
@@ -57,6 +59,14 @@ const Navbar = () => {
                 </div>
 
                 <div className="nav-right">
+                    <button
+                        className="btn-lang-toggle desktop-only"
+                        onClick={toggleTheme}
+                        aria-label="Toggle Theme"
+                    >
+                        {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+                    </button>
+
                     <button
                         className="btn-lang-toggle desktop-only"
                         onClick={toggleLanguage}

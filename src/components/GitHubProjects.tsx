@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { GitBranch, Github } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import './Skeleton.css';
 
 interface Repo {
     id: number;
@@ -12,11 +13,33 @@ interface Repo {
     fork: boolean;
 }
 
+const SkeletonCard = () => (
+    <div className="skeleton-card">
+        <div className="skeleton skeleton-title"></div>
+        <div className="skeleton skeleton-text"></div>
+        <div className="skeleton skeleton-text short"></div>
+        <div className="skeleton skeleton-footer"></div>
+    </div>
+);
+
 const GitHubProjects = () => {
     const { t } = useLanguage();
     const [projects, setProjects] = useState<Repo[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
+    const gridRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        // Trigger animations when content loads
+        if (!loading && gridRef.current) {
+            const cards = gridRef.current.querySelectorAll('.skill-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('visible');
+                }, index * 100); // 100ms stagger
+            });
+        }
+    }, [loading]);
 
     useEffect(() => {
         fetch('https://api.github.com/users/mortizz94/repos?sort=updated&per_page=6')
@@ -43,22 +66,24 @@ const GitHubProjects = () => {
     return (
         <section id="projects" className="section">
             <div className="container">
-                <div className="section-title-wrapper fade-up">
+                <div className="section-title-wrapper fade-up visible">
                     <h2>{t.projects.title}</h2>
                     <p>{t.projects.subtitle}</p>
                 </div>
 
-                <div id="github-projects" className="skills-grid fade-up">
-                    {loading && <p style={{ textAlign: 'center', width: '100%', gridColumn: '1 / -1', color: 'var(--text-secondary)' }}>{t.projects.loading}</p>}
+                <div id="github-projects" className="skills-grid" ref={gridRef}>
+                    {loading && Array.from({ length: 6 }).map((_, i) => (
+                        <SkeletonCard key={i} />
+                    ))}
 
                     {error && <p style={{ color: '#ef4444', gridColumn: '1 / -1', textAlign: 'center' }}>{t.projects.error}</p>}
 
-                    {!loading && !error && projects.map(repo => {
+                    {!loading && !error && projects.map((repo) => {
                         const isOverride = overrides[repo.name];
                         const description = isOverride ? isOverride.desc : (repo.description || 'Sin descripción disponible.');
 
                         return (
-                            <div key={repo.id} className="skill-card">
+                            <div key={repo.id} className="skill-card fade-up">
                                 <div className="skill-header">
                                     <GitBranch style={{ color: 'var(--accent)' }} size={20} />
                                     <h3 style={{ fontSize: '1.1rem' }}>{repo.name}</h3>

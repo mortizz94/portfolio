@@ -49,6 +49,26 @@
   --font-body: 'Inter', sans-serif;
 }
 
+/* Light Theme */
+.light-theme {
+  --bg-main: #ffffff;
+  --bg-secondary: #f1f5f9;
+  --bg-panel: #e2e8f0;
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+
+  --accent: #0284c7;
+  /* Darker blue for contrast */
+  --accent-glow: rgba(2, 132, 199, 0.15);
+  --border-color: rgba(0, 0, 0, 0.1);
+
+  --code-bg: #e2e8f0;
+
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-bg: rgba(0, 0, 0, 0.03);
+}
+
 /* Aurora Animations */
 @keyframes aurora-move {
   0% {

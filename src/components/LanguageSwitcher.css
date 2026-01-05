@@ -1,0 +1,39 @@
+
+/* Language Switcher */
+.btn-lang-toggle {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 0.5rem 0.8rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    margin-right: 1rem;
+}
+
+.btn-lang-toggle:hover {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border-color: var(--primary-color);
+}
+
+.mobile-only {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .btn-lang-toggle.desktop-only {
+        display: none;
+    }
+    .btn-lang-toggle.mobile-only {
+        display: flex;
+        border: none;
+        padding: 0;
+        margin-right: 1rem;
+    }
+}

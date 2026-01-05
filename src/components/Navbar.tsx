@@ -1,11 +1,13 @@
 import { useState } from 'react';
+import { Languages } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import './LanguageSwitcher.css';
 
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const { t } = useLanguage();
+    const { t, language, setLanguage } = useLanguage();
 
     // Scroll effect
     window.addEventListener('scroll', () => {
@@ -15,6 +17,10 @@ const Navbar = () => {
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
     const closeMenu = () => setIsMenuOpen(false);
 
+    const toggleLanguage = () => {
+        setLanguage(language === 'es' ? 'en' : 'es');
+    };
+
     return (
         <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
             <div className="container nav-content">
@@ -23,6 +29,14 @@ const Navbar = () => {
                 </a>
 
                 <div className="mobile-controls">
+                    <button
+                        className="btn-lang-toggle mobile-only"
+                        onClick={toggleLanguage}
+                        style={{ marginRight: '1rem', background: 'transparent', border: 'none', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}
+                    >
+                        <span style={{ fontSize: '0.9rem', fontWeight: 500 }}>{language.toUpperCase()}</span>
+                    </button>
+
                     <button
                         className={`hamburger-menu ${isMenuOpen ? 'active' : ''}`}
                         aria-label="Menu"
@@ -43,6 +57,14 @@ const Navbar = () => {
                 </div>
 
                 <div className="nav-right">
+                    <button
+                        className="btn-lang-toggle desktop-only"
+                        onClick={toggleLanguage}
+                        aria-label="Change Language"
+                    >
+                        <Languages size={18} />
+                        <span>{language.toUpperCase()}</span>
+                    </button>
                     <a href="#contact" className="btn-open-work-pill">{t.nav.contact}</a>
                 </div>
             </div>

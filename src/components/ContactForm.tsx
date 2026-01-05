@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Send, CheckCircle, AlertCircle } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { config } from '../data/config';
 
 const ContactForm = () => {
     const { t } = useLanguage();
@@ -11,12 +12,29 @@ const ContactForm = () => {
         e.preventDefault();
         setStatus('sending');
 
-        // Simulate network delay
-        setTimeout(() => {
-            setStatus('success');
-            setFormState({ name: '', email: '', message: '' });
+        try {
+            const response = await fetch(config.formspreeId, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formState)
+            });
+
+            if (response.ok) {
+                setStatus('success');
+                setFormState({ name: '', email: '', message: '' });
+                // Reset status after 5 seconds to allow new messages
+                setTimeout(() => setStatus('idle'), 5000);
+            } else {
+                setStatus('error');
+                setTimeout(() => setStatus('idle'), 3000);
+            }
+        } catch (error) {
+            console.error(error);
+            setStatus('error');
             setTimeout(() => setStatus('idle'), 3000);
-        }, 1500);
+        }
     };
 
     return (
@@ -30,7 +48,8 @@ const ContactForm = () => {
                 <div className="input-group">
                     <input
                         type="text"
-                        placeholder="Nombre"
+                        name="name"
+                        placeholder={t.contact.form.name}
                         required
                         value={formState.name}
                         onChange={e => setFormState({ ...formState, name: e.target.value })}
@@ -40,7 +59,8 @@ const ContactForm = () => {
                 <div className="input-group">
                     <input
                         type="email"
-                        placeholder="Email"
+                        name="email"
+                        placeholder={t.contact.form.email}
                         required
                         value={formState.email}
                         onChange={e => setFormState({ ...formState, email: e.target.value })}
@@ -49,7 +69,8 @@ const ContactForm = () => {
                 </div>
                 <div className="input-group">
                     <textarea
-                        placeholder="Mensaje"
+                        name="message"
+                        placeholder={t.contact.form.message}
                         required
                         rows={4}
                         value={formState.message}
@@ -59,10 +80,10 @@ const ContactForm = () => {
                 </div>
 
                 <button type="submit" className={`btn-submit ${status}`} disabled={status === 'sending' || status === 'success'}>
-                    {status === 'idle' && <>Enviar Mensaje <Send size={18} /></>}
+                    {status === 'idle' && <>{t.contact.form.send} <Send size={18} /></>}
                     {status === 'sending' && <span className="loader"></span>}
-                    {status === 'success' && <>¡Enviado! <CheckCircle size={18} /></>}
-                    {status === 'error' && <>Error <AlertCircle size={18} /></>}
+                    {status === 'success' && <>{t.contact.form.success} <CheckCircle size={18} /></>}
+                    {status === 'error' && <>{t.contact.form.error} <AlertCircle size={18} /></>}
                 </button>
             </form>
         </div>

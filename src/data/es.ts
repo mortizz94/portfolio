@@ -179,6 +179,15 @@ export const es: Content = {
             code: "Revisa mi código",
             connect: "Conectemos",
             share: "Compartir perfil"
+        },
+        form: {
+            name: "Nombre",
+            email: "Email",
+            message: "Mensaje",
+            send: "Enviar Mensaje",
+            sending: "Enviando...",
+            success: "¡Enviado!",
+            error: "Error al enviar"
         }
     },
 

@@ -80,6 +80,15 @@ export interface ContactSection {
         connect: string;
         share: string;
     };
+    form: {
+        name: string;
+        email: string;
+        message: string;
+        send: string;
+        sending: string;
+        success: string;
+        error: string;
+    };
 }
 
 export interface Content {

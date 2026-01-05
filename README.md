@@ -2,17 +2,20 @@
 
 Portfolio profesional desarrollado con **React**, **TypeScript** y **Vite**. Diseñado para ser rápido, accesible y modular, desplegado en **Cloudflare Pages**.
 
-![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)
+![Version](https://img.shields.io/badge/version-1.2.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 
 ## 🚀 Características Principales
 
 - **Arquitectura Moderna:** Single Page Application (SPA) construida con React 19 y TypeScript.
 - **Rendimiento:** Optimizado con Vite para cargas instantáneas.
+- **Internacionalización (i18n):** Soporte completo Inglés/Español.
 
 - **Integraciones:**
+  - **Formspree:** Formulario de contacto funcional y seguro.
   - **GitHub API:** Visualización dinámica de repositorios destacados.
   - **Lucide React:** Iconografía moderna y ligera.
+- **SEO & PWA:** Totalmente optimizado para buscadores e instalable como App nativa.
 - **Cumplimiento Legal:** Modal integrado para Aviso Legal (LSSI), Privacidad (RGPD) y Cookies.
 - **Diseño Responsivo:** Adaptado a dispositivos móviles, tablets y escritorio.
 
@@ -58,6 +61,12 @@ src/
 ```
 
 ## 📝 Changelog
+
+### v1.2.0 - 2026-01-05
+- **New Feature:** Formulario de Contacto real conectado con Formspree.
+- **New Feature:** SEO Audit completado (Sitemap, Robots, Meta tags).
+- **New Feature:** PWA Ready (Manifest.json y Service Workers capabilities).
+- **Update:** Switcher de idioma mejorado en Navbar.
 
 ### v1.1.0 - 2026-01-04
 - **Feature:** Implementación de soporte multi-idioma (Español/Inglés).
